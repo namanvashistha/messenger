@@ -1,6 +1,6 @@
 # iTalk
 
-#### realtime messenger built in php and ajax
+#### realtime messenger built in php and ajax.
 
 ## [namanvashistha.ml](http://namanvashistha.ml/)
 
