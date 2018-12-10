@@ -33,12 +33,13 @@ nav div
 }
 nav a
 {
-	top: 10px;
+	top: 13px;
 	font-size:18px; 
-	float: left;
+	float: right;
 	position: relative;
 	font-family:Helvetica, Arial, sans-serif;
 	font-weight: bold; 
+	margin-right: 15px;
 
 }
 #chat-list

@@ -1,8 +1,8 @@
 <?php 
-$servername="";
-$username="";
+$servername="localhost";
+$username="root";
 $password="";
-$database="";
+$database="italk";
 $conn=mysqli_connect($servername,$username,$password,$database);
 if(!$conn)
 {

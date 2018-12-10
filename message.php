@@ -48,23 +48,24 @@ else
 	<link rel="shortcut icon"  href="./webimages/allo-logo.png">
 	<link rel="stylesheet" type="text/css" href="styling-msg.css">
 	<meta name="viewport" content="width=device-width" />
-	 <script type="text/javascript">
-		window.location.hash="#bottom";
-</script>
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4725824489805055",
-    enable_page_level_ads: true
-  });
-</script>
+	<meta http-equiv="refresh" content="60"/>
 	 
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+ <script type="text/javascript">
+
+ 	function focus() {
+  	console.log('focus');
+	document.getElementById('foc').focus(); 
+	}
+ </script>
 	 
 </head>
-<body >
-	<nav>
-	<span><a href="home.php"> < Back </a></span>
-        Just for Practise
+<body onload="setTimeout(focus, 15000);">
+	<nav>iTALK
+		<span><a href="logout.php"> logout </a></span>
 	</nav>
 	
 	<div style="margin-top: 50px; width: 100%; display: inline-flex;">
@@ -90,43 +91,22 @@ else
 	<?php if (isset($_SESSION['to_name'])) echo $_SESSION['to_name']; ?></b></b><hr></div>
 	
 	<div id="messages">
-
-	<?php  if (isset($_SESSION['to_name'])) {
-		while($row = mysqli_fetch_array($res))
-           {
-           		if($row['from_name']==$uname && $row['to_name']==$rname)
-           		{?>
-           			<div class="sent">
-           			<?php echo $row['message']; ?>
-           			</div>
-           		<?php
-           		}	
-           		if($row['from_name']==$rname &&
-           			$row['to_name']==$uname)
-           		{?>
-           			<div class="received">
-           			<?php echo $row['message']; ?>
-           			</div>
-           		<?php	
-           		}
-           }
-       }
-       else
-       	{echo "click on username to chat<br>and use send button to refresh";}
-    ?><br>
-    <span id='bottom' style="color:white; position: absolute; bottom:0;">_</span>
-</div>
+		<div id="msg">
+			
+		</div>
+		<div id="foc"></div>
+	</div>
     <div id="footer">
-	<form method="post" action="send.php">
-		
+			
 		<input id="send-box" name="message" placeholder="Type a message">
 		<input id="send" type="submit" name="submit" value="Send">
-	</form>
+
 	</div>
 	</div>
 	<div id="right-bar">
 		<div id="hello-msg"><b>
-		<?php echo 'Hello '.$_SESSION['username']; ?></div></b>
+		<?php echo 'Hello '.$_SESSION['username']; ?><br>
+		</b></div>
 		<div id="online-list">  
               Online Users
             <?php
@@ -146,7 +126,7 @@ else
                                      
                     ?>
                     </a>
-                    <a href="check.php?id=<?php echo $row['name']; ?>"><div class="online-tabs"><?php	echo $row['name'];?> <img src="webimages/online.png"></div>
+                    <a href="check.php?id=<?php echo $row['name']; ?>"><div class="online-tabs"><?php	echo $row['name'];?> </div>
                     <?php
                     }
                   }
@@ -157,7 +137,28 @@ else
         </div>
         </div>
 </div>
+<script>
+	
 
+	  $(document).ready(function(){
+        $('#send').click(function(){
+            var msg = $.trim($('#send-box').val());
+            console.log('done');
+                $.ajax({
+                    url:"send.php",
+                    method:"POST",
+                    data:{message:msg},
+                    dataType:"text",
+                    success:function(data){
+                    	$('#send-box').val("");
+                }
+            });
+        });
+        setInterval(function(){
+    $('#msg').load("fetch.php").fadeIn("slow");
+	},2000);
+    }); 
+</script>
 
 </body>
 </html>
@@ -166,6 +167,6 @@ else
 else
 {
 $_SESSION['invalid']="You must login first";
-header('location:sign_login.php');
+header('location:index.php');
 }
 ?>

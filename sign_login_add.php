@@ -24,12 +24,12 @@ $current_date = date('Y-m-d H:i:s');
             $_SESSION['invalid']="";
             $uname=$_SESSION['username'] ;
             echo "done";
-            header('location:home.php');
+            header('location:message.php');
         }
         }
         else{
         	$_SESSION['invalid']="username already exist";
-        	header('LOCATION:sign_login.php');
+        	header('LOCATION:index.php');
 
 
         } 
@@ -37,7 +37,7 @@ $current_date = date('Y-m-d H:i:s');
    else{    
 
  $_SESSION['invalid']="empty";
-  	header('LOCATION:sign_login.php');
+  	header('LOCATION:index.php');
   }       
     
 

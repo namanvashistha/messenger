@@ -26,7 +26,7 @@ $current_date = date('Y-m-d H:i:s');
 $q="Update users set online=1 ,date_time='$current_date' where name='$uname'; ";
 
 mysqli_query($conn,$q);
-header('location:home.php');
+header('location:message.php');
 }
 else
 {
@@ -37,6 +37,6 @@ header("location:sign_login.php");
    else{    
 
  $_SESSION['invalid']="empty";
-  	header('LOCATION:sign_login.php');
+  	header('LOCATION:index.php');
   } 
 ?>

@@ -8,6 +8,6 @@ $q="Update users set online=0 where name='$uname'; ";
 mysqli_query($conn,$q);
 session_destroy();
 
-header('location:sign_login.php');
+header('location:index.php');
 
 ?>

@@ -3,7 +3,7 @@ session_start();
 include 'connection.php';
 
 $from_name=$_SESSION['username'];
-$message=$_REQUEST['message'];
+$message=$_POST['message'];
 $to_name=$_SESSION['to_name'];
 date_default_timezone_set('Asia/Kolkata');
 $current_date = date('Y-m-d H:i:s');
@@ -15,5 +15,5 @@ $q="insert into messenger (from_name,to_name,message,time) values ('$from_name',
 mysqli_query($conn,$q);
 
 }
-header('location:message.php');
+//header('location:message.php');
 ?>

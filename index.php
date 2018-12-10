@@ -13,18 +13,11 @@ if(!isset($_SESSION['username']))
     <link rel="stylesheet" type="text/css" href="styling.css">
     <link rel="shortcut icon" href="./webimages/icon.jpg">
 
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-    google_ad_client: "ca-pub-4725824489805055",
-    enable_page_level_ads: true
-  });
-</script>
   </head>
   <body>
   <nav>
      <div>
-    Just for Practise 
+    iTalk 
      </div>
    </nav>
      
@@ -58,7 +51,7 @@ if(!isset($_SESSION['username']))
          <form method="post" action="sign_login_add.php">
               <input type="text" name="fname" value="" placeholder="Username">
               <input type="password" name="pass" value="" placeholder="Password">
-                <input  id="button" type="submit" value="Sign Up">
+              <input  id="button" type="submit" value="Sign Up">
          </form>
         </section>
       </div>
@@ -68,7 +61,7 @@ if(!isset($_SESSION['username']))
 }
 else
 {
-  header('LOCATION:home.php');
+  header('LOCATION:message.php');
 }
 ?>
 
