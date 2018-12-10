@@ -2,10 +2,10 @@
 	session_start();
 	include "connection.php";
 	$uname=$_SESSION['username'];
+  if (isset($_SESSION['to_name'])) {
 	$rname=$_SESSION['to_name'];
 	$q="select * from messenger where 1; ";
 	$res=mysqli_query($conn,$q);
-	//if (isset($_SESSION['to_name'])) {
 		while($row = mysqli_fetch_array($res))
            {
            		if($row['from_name']==$uname && $row['to_name']==$rname)
@@ -24,8 +24,8 @@
            		<?php	
            		}
            }
-          //}
-      // else
-       ///{echo "click on username to chat";}
+      }
+       else
+      {echo "click on username to chat";}
     ?><br>
     
